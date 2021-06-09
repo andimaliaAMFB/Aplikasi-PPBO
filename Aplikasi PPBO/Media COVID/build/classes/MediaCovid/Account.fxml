@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<GridPane fx:controller = "MediaCovid.AccountController"
+          xmlns:fx = "http://javafx.com/fxml"
+          alignment= "center" hgap= "10" vgap = "10">
+    
+    <Label text = "My Akun" textFill = "Green"
+           GridPane.columnIndex = "0" GridPane.rowIndex = "0"/>
+    
+    <TableView fx:id="tvSeenTable" GridPane.columnIndex="0"
+                GridPane.rowIndex="1" maxHeight="150">
+        <!--Kolom di dalam tabel-->
+        <columns>
+            <!--Kolom penulis-->
+            <TableColumn fx:id="SeenUser" text="Penulis">
+                <cellValueFactory>
+                    <PropertyValueFactory property="SeenUser"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+        <columns>
+            <!--Kolom informasi-->
+            <TableColumn fx:id="SeenInfo" text="Information" prefWidth="300">
+                <cellValueFactory>
+                    <PropertyValueFactory property="SeenInfo"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+    
+    <!--Informasi Upload-->
+    <VBox GridPane.columnIndex = "0" GridPane.rowIndex = "2">
+        <Label text= "Tulis Berita Terkini"/>
+        <HBox>
+            <TextField fx:id = "tfinfo" focusTraversable = "false"
+                       promptText= "Informasi Covid"/>
+        
+            <Button fx:id="btnSubmit" text="Submit Data"
+                    textAlignment="CENTER"
+                    onAction="#handleButtonAction"/>
+        </HBox>
+    </VBox>
+    
+    <Button GridPane.columnIndex="0" GridPane.rowIndex="3"
+            fx:id="btnHP" text="Home Page"
+            textAlignment="CENTER"
+            onAction="#handleButtonAction"/> 
+</GridPane>

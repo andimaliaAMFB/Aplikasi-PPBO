@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:id="Login_Page"
+          fx:controller = "MediaCovid.LoginController"
+          xmlns:fx = "http://javafx.com/fxml"
+          alignment= "center" hgap= "10" vgap = "10">
+    
+    <Label text = "LOGIN" textFill = "Blue"
+           GridPane.columnIndex = "0" GridPane.rowIndex = "0"/>
+    
+    <!--Username-->
+    <VBox GridPane.columnIndex = "0" GridPane.rowIndex = "1">
+        <Label text= "Username"/>
+        <TextField fx:id = "tfUsername" focusTraversable = "false"
+                   promptText= "Masukan Username"/>
+    </VBox>
+    
+    
+    <!--Password-->
+    <VBox GridPane.columnIndex = "0" GridPane.rowIndex = "2">
+        <Label text= "Password"/>
+        <TextField fx:id = "tfPassword" focusTraversable = "false"
+                   promptText= "Masukan Password"/>
+    </VBox>
+    
+    <VBox GridPane.columnIndex="0" GridPane.rowIndex="3" spacing="10" >
+        <Label fx:id = "LAdminLog" text = ""/>
+        <Button fx:id="btnLogin" text="Login"
+                textAlignment="CENTER"
+                onAction="#handleButtonAction"/>
+    
+        <Button fx:id="btnHP" text="Home Page"
+                textAlignment="CENTER"
+                onAction="#handleButtonAction"/> 
+    </VBox>
+</GridPane>
