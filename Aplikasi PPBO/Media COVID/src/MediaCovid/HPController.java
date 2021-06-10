@@ -46,11 +46,40 @@ public class HPController implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
+        List<List<String>> unSeenList = new ArrayList();
+        Informasi info = new Informasi();
+        for (int i = 0; i < tvDataInformasi.getItems().size(); i++) {
+            info = tvDataInformasi.getItems().get(i);
+            unSeenList.add(new ArrayList<>());
+            unSeenList.get(i).add(info.username.get());
+            unSeenList.get(i).add(info.info.get());
+            
+        }
         if(event.getTarget().equals(btnLogin))
         {
             if(AkunName.getText().equals(""))
             {
-                Parent login_parent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+                Parent login_parent = loader.load();
+
+                LoginController loginControl = loader.getController();
+                
+
+                for (int i = 0; i < unSeenList.size(); i++) {
+                    for (int j = 0; j < unSeenList.get(i).size(); j++) {
+                        //cek apa yang ubah ke List
+                        System.out.println("unSeenList.get(" + i + ").get(" + j + ")\n" + unSeenList.get(i).get(j));
+
+                        //hasil list get(i).get(j) = index [i][j]
+                        //[0][0] = admin
+                        //[0][1] = Hello Everyone
+                        //dst
+                        loginControl.passedData((String)unSeenList.get(i).get(j),i,j);
+                    }
+                    System.out.println();
+                }
+                
+                
                 Scene login_scene = new Scene(login_parent);
                 Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 app_stage.setScene(login_scene);
@@ -76,16 +105,6 @@ public class HPController implements Initializable {
                 
                 AccountController akunControl = loader.getController();
                 akunControl.getUsername(AkunName.getText());
-                
-                
-                List<List<String>> unSeenList = new ArrayList();
-                Informasi info = new Informasi();
-                for (int i = 0; i < tvDataInformasi.getItems().size(); i++) {
-                    info = tvDataInformasi.getItems().get(i);
-                    unSeenList.add(new ArrayList<>());
-                    unSeenList.get(i).add(info.username.get());
-                    unSeenList.get(i).add(info.info.get());
-                }
 
                 for (int i = 0; i < unSeenList.size(); i++) {
                     for (int j = 0; j < unSeenList.get(i).size(); j++) {
