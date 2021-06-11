@@ -19,6 +19,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class AccountController implements Initializable {
@@ -26,6 +27,7 @@ public class AccountController implements Initializable {
     @FXML TextField tfinfo;
     @FXML Button btnHP;
     @FXML Button btnSubmit;
+    @FXML Text TextTitle;
     
     private Informasi info;
     @FXML public TableView<Informasi> tvSeenTable;
@@ -90,6 +92,7 @@ public class AccountController implements Initializable {
     
     public void getUsername(String user){
         this.Username = user;
+        TextTitle.setText(Username+" ACCOUNT");
     }
     
     public void setInformation(String info){

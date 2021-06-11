@@ -6,29 +6,53 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<GridPane fx:controller = "MediaCovid.HPController"
-          xmlns:fx = "http://javafx.com/fxml"
-          alignment= "center" hgap= "10" vgap = "10">
-    
-    <Label text = "HOME PAGE" textFill = "red"
-           GridPane.columnIndex = "0" GridPane.rowIndex = "0"/>
-    
-    <HBox GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="20">
-        <Button fx:id="btnLogin" text="Log In"
+<Pane maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="281.0" prefWidth="388.0"
+      fx:controller = "MediaCovid.HPController"
+          xmlns:fx = "http://javafx.com/fxml">
+    <AnchorPane layoutY="-5.0" prefHeight="55.0" prefWidth="388.0" style="-fx-background-color: #f5a962;">
+        <children>
+            <ImageView fitHeight="42.0" fitWidth="44.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@asset/m.png" />
+                </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="97.0" layoutY="32.0" lineSpacing="2.0" opacity="0.86" strokeType="OUTSIDE" strokeWidth="0.0" text="HOME PAGE MEDIA COVID" textAlignment="JUSTIFY">
+                <font>
+                    <Font name="Eras Bold ITC" size="14.0" />
+                </font>
+            </Text>
+            <Label fx:id="AkunName" layoutX="122.0" layoutY="32.0" prefHeight="25.0" prefWidth="144.0" />
+        </children>
+    </AnchorPane>
+    <HBox layoutX="14.0" layoutY="62.0" spacing="20.0" >
+        <Button fx:id="btnLogin" 
+                mnemonicParsing="false" 
+                text="Log In" textFill="#ffbf00"
+                style="-fx-background-color: WHITE;" 
                 textAlignment="CENTER"
                 onAction="#handleButtonAction"/>
-        <Button fx:id="btnAkun" text="Dashboard"
+        <Button fx:id="btnAkun" 
+                mnemonicParsing="false"
+                text="Dashboard" textFill="#ffbf00"
+                style="-fx-background-color: WHITE;" 
                 textAlignment="CENTER"
                 onAction="#handleButtonAction"/>
-        <Label fx:id="AkunName" textFill = "red" />
     </HBox>
-    <TableView fx:id="tvDataInformasi" GridPane.columnIndex="0"
-                GridPane.rowIndex="2" maxHeight="150">
+    
+    <TableView fx:id="tvDataInformasi"
+                   layoutX="14.0" layoutY="101.0" prefHeight="118.0" prefWidth="352.0">
         <!--Kolom di dalam tabel-->
         <columns>
             <!--Kolom penulis-->
-            <TableColumn fx:id="user" text="Penulis">
+            <TableColumn fx:id="user" text="Penulis"
+                             prefWidth="75.0">
                 <cellValueFactory>
                     <PropertyValueFactory property="user"/>
                 </cellValueFactory>
@@ -36,7 +60,8 @@
         </columns>
         <columns>
             <!--Kolom informasi-->
-            <TableColumn fx:id="info" text="Information" prefWidth="300">
+            <TableColumn fx:id="info" text="Information"
+                             prefWidth="276.0">
                 <cellValueFactory>
                     <PropertyValueFactory property="info"/>
                 </cellValueFactory>
@@ -45,7 +70,16 @@
     </TableView>
     
     <Button GridPane.columnIndex="0" GridPane.rowIndex="3"
-            fx:id="btnEXIT" text="EXIT"
-            textAlignment="CENTER"
-            onAction="#handleButtonAction"/> 
-</GridPane>
+                fx:id="btnEXIT" text="EXIT"
+                layoutX="325.0" layoutY="242.0"
+                mnemonicParsing="false"
+                prefHeight="25.0" prefWidth="42.0" 
+                style="-fx-background-color: #f55c47;" 
+                textFill="WHITE" textOverrun="WORD_ELLIPSIS"
+                textAlignment="CENTER"
+                onAction="#handleButtonAction">
+        <font>
+            <Font name="Berlin Sans FB" size="12.0" />
+        </font>
+    </Button> 
+</Pane>
