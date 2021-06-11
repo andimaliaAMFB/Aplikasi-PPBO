@@ -6,20 +6,52 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<GridPane fx:controller = "MediaCovid.AccountController"
-          xmlns:fx = "http://javafx.com/fxml"
-          alignment= "center" hgap= "10" vgap = "10">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="336.0" prefWidth="374.0"
+      fx:controller = "MediaCovid.AccountController"
+      xmlns:fx = "http://javafx.com/fxml">
+    <GridPane prefHeight="69.0" prefWidth="374.0"
+              style="-fx-background-color: #f5a962;"
+              alignment= "center" hgap= "10" vgap = "10">
+    </GridPane>
     
-    <Label text = "My Akun" textFill = "Green"
-           GridPane.columnIndex = "0" GridPane.rowIndex = "0"/>
+    <ImageView fitHeight="47.0" fitWidth="45.0" layoutX="24.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@asset/account.png" />
+        </image>
+    </ImageView>
     
-    <TableView fx:id="tvSeenTable" GridPane.columnIndex="0"
-                GridPane.rowIndex="1" maxHeight="150">
+    <Text fx:id = "TextTitle"
+                  fill="WHITE"
+                  layoutX="120.0" layoutY="43.0" strokeType="OUTSIDE"
+                  strokeWidth="0.0" text="MY ACCOUNT" underline="true">
+        <font>
+            <Font name="Eras Bold ITC" size="24.0" />
+        </font>
+    </Text>
+    
+    <Button fx:id="btnHP"
+            layoutX="149.0" layoutY="79.0"
+            mnemonicParsing="false"
+            text="Home Page" textFill="#ffb200"
+            style="-fx-background-color: WHITE;" 
+            textAlignment="CENTER"
+            onAction="#handleButtonAction"/> 
+    
+    <TableView fx:id="tvSeenTable"
+               layoutX="6.0" layoutY="113.0" prefHeight="147.0" prefWidth="361.0">
         <!--Kolom di dalam tabel-->
         <columns>
             <!--Kolom penulis-->
-            <TableColumn fx:id="SeenUser" text="Penulis">
+            <TableColumn fx:id="SeenUser" 
+                             prefWidth="121.0"
+                             text="Penulis">
                 <cellValueFactory>
                     <PropertyValueFactory property="SeenUser"/>
                 </cellValueFactory>
@@ -27,7 +59,9 @@
         </columns>
         <columns>
             <!--Kolom informasi-->
-            <TableColumn fx:id="SeenInfo" text="Information" prefWidth="300">
+            <TableColumn fx:id="SeenInfo"
+                             prefWidth="239.0"
+                             text="Information">
                 <cellValueFactory>
                     <PropertyValueFactory property="SeenInfo"/>
                 </cellValueFactory>
@@ -36,20 +70,16 @@
     </TableView>
     
     <!--Informasi Upload-->
-    <VBox GridPane.columnIndex = "0" GridPane.rowIndex = "2">
-        <Label text= "Tulis Berita Terkini"/>
-        <HBox>
-            <TextField fx:id = "tfinfo" focusTraversable = "false"
-                       promptText= "Informasi Covid"/>
+    <Text fill="#ff9d00" layoutX="9.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tulis berita " />
+        <TextField fx:id = "tfinfo" focusTraversable = "false"
+                       layoutX="9.0" layoutY="284.0"
+                       promptText= "Tulis berita disini"/>
         
-            <Button fx:id="btnSubmit" text="Submit Data"
+        <Button fx:id="btnSubmit"
+                    layoutX="161.0" layoutY="284.0"
+                    mnemonicParsing="false"
+                    text="Submit Data" textFill="#ffae00"
+                    style="-fx-background-color: WHITE;" 
                     textAlignment="CENTER"
                     onAction="#handleButtonAction"/>
-        </HBox>
-    </VBox>
-    
-    <Button GridPane.columnIndex="0" GridPane.rowIndex="3"
-            fx:id="btnHP" text="Home Page"
-            textAlignment="CENTER"
-            onAction="#handleButtonAction"/> 
-</GridPane>
+</Pane>

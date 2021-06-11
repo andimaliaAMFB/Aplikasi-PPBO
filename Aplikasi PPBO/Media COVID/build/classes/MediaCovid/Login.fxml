@@ -5,38 +5,88 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<GridPane fx:id="Login_Page"
-          fx:controller = "MediaCovid.LoginController"
-          xmlns:fx = "http://javafx.com/fxml"
-          alignment= "center" hgap= "10" vgap = "10">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="307.0" prefWidth="250.0"
+      fx:controller = "MediaCovid.LoginController"
+          xmlns:fx = "http://javafx.com/fxml">
+    <ImageView fitHeight="58.0" fitWidth="59.0" layoutX="96.0" layoutY="9.0"
+               pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@asset/m.png" />
+        </image>
+    </ImageView>
     
-    <Label text = "LOGIN" textFill = "Blue"
-           GridPane.columnIndex = "0" GridPane.rowIndex = "0"/>
+    <Text fill="#fc8b2f"
+          layoutX="68.0" layoutY="81.0"
+          strokeType="OUTSIDE" strokeWidth="0.0"
+          text="Media Covid">
+        <font>
+            <Font name="Eras Bold ITC" size="20.0" />
+        </font>
+    </Text>
     
-    <!--Username-->
-    <VBox GridPane.columnIndex = "0" GridPane.rowIndex = "1">
-        <Label text= "Username"/>
-        <TextField fx:id = "tfUsername" focusTraversable = "false"
-                   promptText= "Masukan Username"/>
+    <Text fill="#ffa503" layoutX="108.0" layoutY="96.0"
+          strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN">
+        <font>
+            <Font name="System Bold" size="12.0" />
+        </font>
+    </Text>
+    
+    <Label fx:id = "LAdminLog" text = "" textFill="red" 
+           layoutX="85"  layoutY="120.0"
+           textAlignment="CENTER" />
+    
+    <VBox layoutX="14.0" layoutY="137.0">
+        <!--Username-->
+        <VBox>
+            <Text  fill="#ff8800" text="Username"
+                   layoutX="14.0" layoutY="137.0"
+                   strokeType="OUTSIDE" strokeWidth="0.0">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </Text>
+            <TextField fx:id = "tfUsername" focusTraversable = "false"
+                       prefHeight="25.0" prefWidth="216.0"
+                       promptText= "Masukan Username"/>
+        </VBox>
+        <!--Password-->
+        <VBox>
+            <Text fill="#ff8800" layoutX="14.0" layoutY="195.0"
+                  strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </Text>
+            <TextField fx:id = "tfPassword" focusTraversable = "false"
+                       layoutX="14.0" layoutY="201.0" prefHeight="25.0" prefWidth="216.0"
+                       promptText= "Masukan Password"/>
+        </VBox>
     </VBox>
     
-    
-    <!--Password-->
-    <VBox GridPane.columnIndex = "0" GridPane.rowIndex = "2">
-        <Label text= "Password"/>
-        <TextField fx:id = "tfPassword" focusTraversable = "false"
-                   promptText= "Masukan Password"/>
-    </VBox>
-    
-    <VBox GridPane.columnIndex="0" GridPane.rowIndex="3" spacing="10" >
-        <Label fx:id = "LAdminLog" text = ""/>
-        <Button fx:id="btnLogin" text="Login"
-                textAlignment="CENTER"
-                onAction="#handleButtonAction"/>
-    
-        <Button fx:id="btnHP" text="Home Page"
-                textAlignment="CENTER"
-                onAction="#handleButtonAction"/> 
-    </VBox>
-</GridPane>
+    <GridPane layoutX="0" layoutY="265.0"
+              prefHeight="42.0" prefWidth="250.0"
+              style="-fx-background-color: #f5a962;">
+    </GridPane>
+    <Button fx:id="btnLogin"
+            mnemonicParsing="false"
+            layoutX="14.0" layoutY="273.0"
+            text="Login" textFill="#ff7b00"
+            style="-fx-background-color: WHITE;" 
+            textAlignment="CENTER"
+            onAction="#handleButtonAction"/>
+    <Button fx:id="btnHP"
+            mnemonicParsing="false"
+            layoutX="158.0" layoutY="273.0"
+            prefHeight="25.0" prefWidth="75.0"
+            text="Home Page" textFill="#ff7b00"
+            style="-fx-background-color: WHITE;" 
+            textAlignment="CENTER"
+            onAction="#handleButtonAction"/>
+</Pane>
