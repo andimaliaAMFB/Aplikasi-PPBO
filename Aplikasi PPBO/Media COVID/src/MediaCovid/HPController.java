@@ -1,85 +1,42 @@
 package MediaCovid;
 
-
+import Model.InformasiList;
+import Model.InformasiProperty;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.*;
+import javafx.collections.*;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.fxml.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class HPController implements Initializable {
-    @FXML
-    Button btnLogin;
-    @FXML
-    Button btnAkun;
-    @FXML
-    Button btnEXIT;
-    @FXML
-    Label AkunName;
-    
+    @FXML Button btnLogin;
+    @FXML Button btnAkun;
+    @FXML Button btnEXIT;
+    @FXML Label AkunName;
+
     public String Username="";
     
-    @FXML public TableView<Informasi> tvDataInformasi;
-    @FXML TableColumn<Informasi, String> user;
-    @FXML TableColumn<Informasi, String> info;
+    public InformasiList infoList;
     
-    public ObservableList<Informasi> listInfo = FXCollections.observableArrayList(
-        new Informasi("Admin", "Hello Everyone"),
-        new Informasi("Admin", "This is COVID MEDIA")
-        );
+    @FXML public TableView<InformasiProperty> tvDataInformasi;
+    @FXML TableColumn<InformasiProperty, String> user;
+    @FXML TableColumn<InformasiProperty, String> info;
+    
+    public ObservableList<InformasiProperty> listInfo = FXCollections.observableArrayList();
     Main main = new Main();
     
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
-        List<List<String>> unSeenList = new ArrayList();
-        Informasi info = new Informasi();
-        for (int i = 0; i < tvDataInformasi.getItems().size(); i++) {
-            info = tvDataInformasi.getItems().get(i);
-            unSeenList.add(new ArrayList<>());
-            unSeenList.get(i).add(info.username.get());
-            unSeenList.get(i).add(info.info.get());
-            
-        }
         if(event.getTarget().equals(btnLogin))
         {
             if(AkunName.getText().equals(""))
             {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
                 Parent login_parent = loader.load();
-
-                LoginController loginControl = loader.getController();
-                
-
-                for (int i = 0; i < unSeenList.size(); i++) {
-                    for (int j = 0; j < unSeenList.get(i).size(); j++) {
-                        //cek apa yang ubah ke List
-                        System.out.println("unSeenList.get(" + i + ").get(" + j + ")\n" + unSeenList.get(i).get(j));
-
-                        //hasil list get(i).get(j) = index [i][j]
-                        //[0][0] = admin
-                        //[0][1] = Hello Everyone
-                        //dst
-                        loginControl.passedData((String)unSeenList.get(i).get(j),i,j);
-                    }
-                    System.out.println();
-                }
-                
-                
                 Scene login_scene = new Scene(login_parent);
                 Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 app_stage.setScene(login_scene);
@@ -106,23 +63,6 @@ public class HPController implements Initializable {
                 
                 AccountController akunControl = loader.getController();
                 akunControl.getUsername(AkunName.getText());
-
-                for (int i = 0; i < unSeenList.size(); i++) {
-                    for (int j = 0; j < unSeenList.get(i).size(); j++) {
-                        //cek apa yang ubah ke List
-                        System.out.println("unSeenList.get(" + i + ").get(" + j + ")\n" + unSeenList.get(i).get(j));
-
-                        //hasil list get(i).get(j) = index [i][j]
-                        //[0][0] = admin
-                        //[0][1] = Hello Everyone
-                        //dst
-                        if ((j + 1) < unSeenList.get(i).size()) {
-                            akunControl.UnSeenListInfo.add(new Informasi(unSeenList.get(i).get(j), unSeenList.get(i).get(j + 1)));
-                        }
-                    }
-                    System.out.println();
-                }
-                System.out.println("Go to Akun Page");
                 
                 Scene Akun_scene = new Scene(Akun_parent);
                 Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -138,9 +78,11 @@ public class HPController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        user.setCellValueFactory(new PropertyValueFactory<Informasi, String>("username"));
-        info.setCellValueFactory(new PropertyValueFactory<Informasi, String>("info"));
-        tvDataInformasi.setItems(listInfo);
+        infoList = new InformasiList();
+        infoList.loadXMLFile();
+        user.setCellValueFactory(cellData -> cellData.getValue().getUsernameProperty());
+        info.setCellValueFactory(cellData -> cellData.getValue().getInfoProperty());
+        tvDataInformasi.setItems(infoList.get());
         AkunName.setText(Username);
     }
     
@@ -158,10 +100,5 @@ public class HPController implements Initializable {
             System.out.println(AkunName.getText()+" Sedang Login");
             btnLogin.setText("Log Out");
         }
-    }
-    
-    public void getInformation(String user, String info){
-        listInfo.add(new Informasi(user,info));
-        System.out.println(user+" || "+info);
     }
 }

@@ -44,12 +44,12 @@
             textAlignment="CENTER"
             onAction="#handleButtonAction"/> 
     
-    <TableView fx:id="tvSeenTable"
+    <TableView fx:id="tvDataInformasi"
                layoutX="6.0" layoutY="113.0" prefHeight="147.0" prefWidth="361.0">
         <!--Kolom di dalam tabel-->
         <columns>
             <!--Kolom penulis-->
-            <TableColumn fx:id="SeenUser" 
+            <TableColumn fx:id="user" 
                              prefWidth="121.0"
                              text="Penulis">
                 <cellValueFactory>
@@ -59,7 +59,7 @@
         </columns>
         <columns>
             <!--Kolom informasi-->
-            <TableColumn fx:id="SeenInfo"
+            <TableColumn fx:id="info"
                              prefWidth="239.0"
                              text="Information">
                 <cellValueFactory>

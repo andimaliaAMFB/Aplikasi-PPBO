@@ -77,7 +77,15 @@
     <Button fx:id="btnLogin"
             mnemonicParsing="false"
             layoutX="14.0" layoutY="273.0"
+            prefHeight="25.0" prefWidth="75.0"
             text="Login" textFill="#ff7b00"
+            style="-fx-background-color: WHITE;" 
+            textAlignment="CENTER"
+            onAction="#handleButtonAction"/>
+    <Button fx:id="btnRegist"
+            mnemonicParsing="false"
+            layoutX="90.0" layoutY="273.0"
+            text="Sign In" textFill="#ff7b00"
             style="-fx-background-color: WHITE;" 
             textAlignment="CENTER"
             onAction="#handleButtonAction"/>
