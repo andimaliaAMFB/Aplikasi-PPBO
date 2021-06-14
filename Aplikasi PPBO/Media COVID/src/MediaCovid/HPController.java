@@ -91,6 +91,7 @@ public class HPController implements Initializable {
                 btnLogin.setText("Log In");
                 AkunName.setText("");
             }
+            System.out.println("Go to Login Page");
         }
         else if(event.getTarget().equals(btnAkun)){
             System.out.println("This is "+AkunName.getText());
@@ -121,6 +122,7 @@ public class HPController implements Initializable {
                     }
                     System.out.println();
                 }
+                System.out.println("Go to Akun Page");
                 
                 Scene Akun_scene = new Scene(Akun_parent);
                 Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

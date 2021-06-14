@@ -13,7 +13,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity"
       minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="336.0" prefWidth="374.0"
+      prefHeight="380.0" prefWidth="374.0"
       fx:controller = "MediaCovid.AccountController"
       xmlns:fx = "http://javafx.com/fxml">
     <GridPane prefHeight="69.0" prefWidth="374.0"
@@ -75,11 +75,22 @@
                        layoutX="9.0" layoutY="284.0"
                        promptText= "Tulis berita disini"/>
         
-        <Button fx:id="btnSubmit"
-                    layoutX="161.0" layoutY="284.0"
-                    mnemonicParsing="false"
-                    text="Submit Data" textFill="#ffae00"
-                    style="-fx-background-color: WHITE;" 
-                    textAlignment="CENTER"
-                    onAction="#handleButtonAction"/>
+    <Button fx:id="btnSubmit"
+            layoutX="161.0" layoutY="284.0"
+            mnemonicParsing="false"
+            text="Submit Data" textFill="#ffae00"
+            style="-fx-background-color: WHITE;" 
+            textAlignment="CENTER"
+            onAction="#handleButtonAction"/>
+        
+    <Button fx:id="btnRemove"
+            layoutX="9.0" layoutY="320.0"
+            mnemonicParsing="false"
+            text="Remove Selected Data" textFill="#ffae00"
+            style="-fx-background-color: WHITE;" 
+            textAlignment="CENTER"
+            onAction="#handleButtonAction"/>
+    
+    <Label fx:id = "DelSistem" text=""
+           layoutX="9.0" layoutY="350.0"/>
 </Pane>
