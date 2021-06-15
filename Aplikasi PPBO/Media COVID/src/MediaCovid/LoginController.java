@@ -1,7 +1,6 @@
 package MediaCovid;
 
 import Model.DataAkun;
-import Model.DataAkunList;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class LoginController implements Initializable {
     @FXML Button btnHP;
     
     public List<List<String>> unSeenListLogin = new ArrayList();
-    DataAkun akun = new DataAkun("","","","");
+    DataAkun akun = new DataAkun();
     
     @FXML private void handleButtonAction(ActionEvent event) throws IOException {
         
@@ -38,29 +37,20 @@ public class LoginController implements Initializable {
             Parent HP_parent = loader.load();
             HPController hpControl = loader.getController();
             
-            if (tfUsername.getText().equals("admin") || tfUsername.getText().equals("Admin")) 
+            if (akun.PassCek(tfUsername.getText(),tfPassword.getText())) 
             {
-                if(!akun.AdminPassCek(tfPassword.getText()))
-                {
-                    LAdminLog.setText("Password Salah");
-                }
-                else
-                {
+                if (tfUsername.getText().equals("admin") || tfUsername.getText().equals("Admin")) {
                     tfUsername.setText("Admin");
-                    hpControl.getUsername(tfUsername.getText());
-                    Scene HP_scene = new Scene(HP_parent);
-                    Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    app_stage.setScene(HP_scene);
-                    app_stage.show();
                 }
-            }
-            else
-            {   
                 hpControl.getUsername(tfUsername.getText());
                 Scene HP_scene = new Scene(HP_parent);
                 Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 app_stage.setScene(HP_scene);
                 app_stage.show();
+                System.out.println("[Login] Go to Homepage");
+            }
+            else{
+                LAdminLog.setText("Password Salah");
             }
         }
         else if(event.getTarget().equals(btnHP))
@@ -70,18 +60,11 @@ public class LoginController implements Initializable {
             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             app_stage.setScene(HP_scene);
             app_stage.show();
+            System.out.println("[Login] Go to Homepage");
         }
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }    
-    
-    public void passedData(String InfoArray, int Array, int Array2){
-        unSeenListLogin.add(new ArrayList<>());
-        if(Array2 == 0)
-            unSeenListLogin.get(Array).add(InfoArray);
-        else
-            unSeenListLogin.get(Array).add(InfoArray);
-    }
 }

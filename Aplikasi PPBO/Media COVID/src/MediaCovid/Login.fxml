@@ -82,13 +82,6 @@
             style="-fx-background-color: WHITE;" 
             textAlignment="CENTER"
             onAction="#handleButtonAction"/>
-    <Button fx:id="btnRegist"
-            mnemonicParsing="false"
-            layoutX="90.0" layoutY="273.0"
-            text="Sign In" textFill="#ff7b00"
-            style="-fx-background-color: WHITE;" 
-            textAlignment="CENTER"
-            onAction="#handleButtonAction"/>
     <Button fx:id="btnHP"
             mnemonicParsing="false"
             layoutX="158.0" layoutY="273.0"

@@ -42,7 +42,7 @@
             text="Home Page" textFill="#ffb200"
             style="-fx-background-color: WHITE;" 
             textAlignment="CENTER"
-            onAction="#handleButtonAction"/> 
+            onAction="#HPAction"/> 
     
     <TableView fx:id="tvDataInformasi"
                layoutX="6.0" layoutY="113.0" prefHeight="147.0" prefWidth="361.0">
@@ -50,8 +50,8 @@
         <columns>
             <!--Kolom penulis-->
             <TableColumn fx:id="user" 
-                             prefWidth="121.0"
-                             text="Penulis">
+                         prefWidth="121.0"
+                         text="Penulis" >
                 <cellValueFactory>
                     <PropertyValueFactory property="SeenUser"/>
                 </cellValueFactory>
@@ -60,8 +60,9 @@
         <columns>
             <!--Kolom informasi-->
             <TableColumn fx:id="info"
-                             prefWidth="239.0"
-                             text="Information">
+                         prefWidth="239.0"
+                         text="Information"
+                         onEditCommit="#EditedData">
                 <cellValueFactory>
                     <PropertyValueFactory property="SeenInfo"/>
                 </cellValueFactory>
@@ -81,7 +82,7 @@
             text="Submit Data" textFill="#ffae00"
             style="-fx-background-color: WHITE;" 
             textAlignment="CENTER"
-            onAction="#handleButtonAction"/>
+            onAction="#SubmitAction"/>
         
     <Button fx:id="btnRemove"
             layoutX="9.0" layoutY="320.0"
@@ -89,8 +90,8 @@
             text="Remove Selected Data" textFill="#ffae00"
             style="-fx-background-color: WHITE;" 
             textAlignment="CENTER"
-            onAction="#handleButtonAction"/>
+            onAction="#RemoveAction"/>
     
-    <Label fx:id = "DelSistem" text=""
+    <Label fx:id = "Alern" text=""
            layoutX="9.0" layoutY="350.0"/>
 </Pane>

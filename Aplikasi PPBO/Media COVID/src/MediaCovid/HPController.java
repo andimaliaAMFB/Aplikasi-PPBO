@@ -71,7 +71,7 @@ public class HPController implements Initializable {
             }
         }
         else if(event.getTarget().equals(btnEXIT)){
-            System.out.print("Exit The Application");
+            System.out.print("[Homepage] Exit The Application");
             System.exit(0);
         }
     }
@@ -89,15 +89,15 @@ public class HPController implements Initializable {
     public void getUsername(String user){
         this.Username = user;
         AkunName.setText(user);
-        System.out.println(AkunName.getText());
+        System.out.println("[Homepage] AkunName: "+ AkunName.getText());
         Logged();
     }
     
     public void Logged(){
-        System.out.println("Username: "+ Username);
+        System.out.println("[Homepage] Username: "+ Username);
         if(!AkunName.getText().equals(""))
         {
-            System.out.println(AkunName.getText()+" Sedang Login");
+            System.out.println("[Homepage] "+ AkunName.getText()+" Sedang Login");
             btnLogin.setText("Log Out");
         }
     }
