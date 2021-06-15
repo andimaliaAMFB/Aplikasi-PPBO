@@ -49,13 +49,14 @@ public class InformasiList {
     }
     
     public Informasi[] getArray(){
-        InformasiProperty informasi = new InformasiProperty();
         Informasi[] array = new Informasi[listInfo.size()];
         for(int i=0; i<listInfo.size();i++)
         {
             String username = listInfo.get(i).getUsername();
             String info = listInfo.get(i).getInfo();
             array[i] = new Informasi(username,info);
+            System.out.println(username+" || "+info);
+            System.out.println(array[i]);
         }
         
         return array;
@@ -65,6 +66,7 @@ public class InformasiList {
         Informasi[] array = this.getArray();
         XStream xs = new XStream(new StaxDriver());
         String xml = xs.toXML(array);
+        System.out.println(xml);
         
         try{
             FileOutputStream output = new FileOutputStream(InfoXmlFile);

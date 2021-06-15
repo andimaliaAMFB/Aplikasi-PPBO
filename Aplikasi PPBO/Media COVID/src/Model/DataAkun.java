@@ -1,68 +1,104 @@
 package Model;
 
 import Model.Informasi;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.StaxDriver;
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.ArrayList;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class DataAkun {
-    protected SimpleStringProperty username;
-    protected SimpleStringProperty password;
-    protected SimpleStringProperty email;
-    protected SimpleStringProperty notlp;
-    
-    private Informasi info = new Informasi("","");
+    protected String username;
+    protected String password;
+    protected String email;
+    protected String notlp;
 
+    public DataAkun() {
+    }
     public DataAkun(String username, String password, String email, String notlp) {
-        this.username = new SimpleStringProperty(username);
-        this.password = new SimpleStringProperty(password);
-        this.email = new SimpleStringProperty(email);
-        this.notlp = new SimpleStringProperty(notlp);
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.notlp = notlp;
     }
 
+    
     public String getUsername() {
-        return this.username.get();
+        return username;
     }
+    @XmlElement
     public void setUsername(String username) {
-        this.username.set(username);
+        this.username = username;
     }
-    
 
+    
     public String getPassword() {
-        return password.get();
+        return password;
     }
+    @XmlElement
     public void setPassword(String password) {
-        this.password.set(password);
+        this.password = password;
     }
-
     
+
     public String getEmail() {
-        return this.email.get();
+        return email;
     }
+    @XmlElement
     public void setEmail(String email) {
-        this.email.set(email);
+        this.email = email;
     }
 
     
-    public String getNoTlp() {
-        return notlp.get();
+    public String getNotlp() {
+        return notlp;
     }
-    public void setNoTlp(String notlp) {
-        this.notlp.set(notlp);
+    @XmlElement
+    public void setNotlp(String notlp) {
+        this.notlp = notlp;
     }
     
+    @Override
+    public String toString(){
+        return "DataAkun{" +
+               "username="+username+
+               "password="+password+
+               "email="+email+
+               "notlp="+notlp+"}";
+    }
     
-    public Boolean AdminPassCek(String cek){
-        String pass[] = {"admin", "demo"};
-        boolean Cek = false;
-        for(int i=0;i<2;i++)
-        {
-            if(cek.equals(pass[i]))
-                Cek = true;
+    public boolean PassCek(String username, String password){
+        boolean userIspass = false;
+        
+        if (username.equals("admin")) {
+            username = "Admin";
         }
-        return Cek;
-    }
-    
-    public void sendUsernameInfo (String username){
-        info.setUsername(username);
+        
+        if (username.equals("Admin")) {
+            // print user object
+            System.out.println("\n(username)" + username);
+
+            if (password.equals("admin")||password.equals("demo")) {
+                // print password object
+                System.out.println("\n(username)" + username);
+                userIspass = true;
+            } else {
+                System.out.println("Password Salah");
+            }
+        }
+        else
+            userIspass = true;
+        
+        return userIspass;
     }
 }
