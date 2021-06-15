@@ -17,35 +17,39 @@
       fx:controller = "MediaCovid.AccountController"
       xmlns:fx = "http://javafx.com/fxml">
     <GridPane prefHeight="69.0" prefWidth="374.0"
-              style="-fx-background-color: #f5a962;"
+              style="-fx-background-color: #FC5404;"
               alignment= "center" hgap= "10" vgap = "10">
     </GridPane>
     
-    <ImageView fitHeight="47.0" fitWidth="45.0" layoutX="24.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitHeight="47.0" fitWidth="45.0"
+               layoutX="26.0" layoutY="9.0"
+               pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@asset/account.png" />
         </image>
     </ImageView>
     
     <Text fx:id = "TextTitle"
-                  fill="WHITE"
-                  layoutX="120.0" layoutY="43.0" strokeType="OUTSIDE"
-                  strokeWidth="0.0" text="MY ACCOUNT" underline="true">
+          fill="WHITE"
+          layoutX="120.0" layoutY="43.0"
+          strokeType="OUTSIDE" strokeWidth="0.0"
+          text="MY ACCOUNT" underline="true">
         <font>
-            <Font name="Eras Bold ITC" size="24.0" />
+            <Font name="MT Extra" size="27.0" />
         </font>
     </Text>
     
     <Button fx:id="btnHP"
             layoutX="149.0" layoutY="79.0"
             mnemonicParsing="false"
-            text="Home Page" textFill="#ffb200"
-            style="-fx-background-color: WHITE;" 
+            text="Home Page" textFill="WHITE"
+            style="-fx-background-color: #FC5404;"
             textAlignment="CENTER"
             onAction="#HPAction"/> 
     
     <TableView fx:id="tvDataInformasi"
-               layoutX="6.0" layoutY="113.0" prefHeight="147.0" prefWidth="361.0">
+               layoutX="6.0" layoutY="113.0"
+               prefHeight="147.0" prefWidth="361.0">
         <!--Kolom di dalam tabel-->
         <columns>
             <!--Kolom penulis-->
@@ -71,23 +75,31 @@
     </TableView>
     
     <!--Informasi Upload-->
-    <Text fill="#ff9d00" layoutX="9.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tulis berita " />
+    <Text fill="#fc5404"
+          layoutX="10.0" layoutY="277.0"
+          strokeType="OUTSIDE" strokeWidth="0.0"
+          text="Tulis berita " />
         <TextField fx:id = "tfinfo" focusTraversable = "false"
-                       layoutX="9.0" layoutY="284.0"
-                       promptText= "Tulis berita disini"/>
+                   layoutX="9.0" layoutY="284.0"
+                   promptText= "Tulis berita disini">
+            <font>
+                <Font name="System Italic" size="12.0" />
+            </font>
+        </TextField>
         
     <Button fx:id="btnSubmit"
             layoutX="161.0" layoutY="284.0"
             mnemonicParsing="false"
-            text="Submit Data" textFill="#ffae00"
-            style="-fx-background-color: WHITE;" 
+            text="Submit Data" textFill="WHITE"
+            style="-fx-background-color: #FC5404;"
             textAlignment="CENTER"
             onAction="#SubmitAction"/>
         
     <Button fx:id="btnRemove"
-            layoutX="9.0" layoutY="320.0"
+            layoutX="8.0" layoutY="320.0"
+            prefHeight="17.0" prefWidth="148.0"
             mnemonicParsing="false"
-            text="Remove Selected Data" textFill="#ffae00"
+            text="Remove Selected Data" textFill="RED"
             style="-fx-background-color: WHITE;" 
             textAlignment="CENTER"
             onAction="#RemoveAction"/>
